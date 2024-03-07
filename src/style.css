@@ -1,25 +1,53 @@
+:root {
+    --sidebar-width: 300px;
+}
+
 body {
     margin: 0;
     padding: 0;
+    max-height: 100vh;
 
 }
 
+
+/* Everything in Sidebar */
+
 .sidebar {
     background-color: black;
-    width: 150px;
-    color: white;
-
+    
     /* Fixed on left side */
     position: fixed;
     top: 0;
-    bottom: 0;
     left: 0;
+    
+    height: 100%;
+    width: var(--sidebar-width);
+
+
+
+    --sidebar-padding-left: 32px;
+    --sidebar-font-size: 16px;
+    --sidebar-accented-color: #fff;
+
+    font-size: var(--sidebar-font-size);
+    color: var(--sidebar-accented-color);
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    margin-top: 16px;
+    padding-left: 64px;
+
 }
 
 .pfp-container {
     width: 50px;
     height: 50px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--sidebar-accented-color);
     border-radius: 100%;
 
     /* Centre image using flexbox */
@@ -33,3 +61,53 @@ body {
     max-height: 90%;
     border-radius: 100%;
 }
+
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-list {
+    margin-top: 64px;
+}
+
+.nav-list li {
+    height: 48px;
+}
+
+.nav-list li a {
+    max-width: 100%;
+    height: 100%;
+    
+    padding-left: var(--sidebar-padding-left);
+    
+    /* Vertically center text */
+    display: flex;
+    align-items: center;
+}
+
+.nav-list li a:hover {
+    background-color: var(--sidebar-accented-color);
+    color: black;
+}
+
+.management ul {
+    position: absolute;
+    margin: 0;
+    bottom: 64px;
+}
+
+.management ul li {
+    padding-left: var(--sidebar-padding-left);
+    height: 32px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+/* Main content */
