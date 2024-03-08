@@ -115,6 +115,7 @@ a.active{
 .main-content {
     margin-left: var(--sidebar-width);
     padding-left: 32px;
+    padding-right: 32px;
 }
 
 .main-content .active {
@@ -136,4 +137,23 @@ a.active{
 
 .finished-tasks {
     display: none;
+}
+
+
+.title-container {
+    font-size: 64px;
+    font-weight: 700;
+    margin-top: 32px;
+    height: 80px;
+
+    /* title underline */
+    width: fit-content;
+    border-bottom: 4px solid black;
+    padding-right: 24px;
+
+}
+
+.projects-table {
+    background-color: bisque;
+    height: 80vh;
 }
