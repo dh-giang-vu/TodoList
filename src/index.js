@@ -1,15 +1,11 @@
 import './style.css'
 
-
 const sidebarNav = document.querySelector(".nav-list");
-const sidebarNavLinks = document.querySelectorAll('.nav-list a');
-const mainContentPgs = document.querySelector(".main-content").children;
-
-
-
 
 const displayController = (function() {
     let activeIndex = 0;
+    const sidebarNavLinks = document.querySelectorAll('.nav-list a');
+    const mainContentPgs = document.querySelector(".main-content").children;
     
     const removeActive = () => {
         sidebarNavLinks[activeIndex].classList.remove("active");
