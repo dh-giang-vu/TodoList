@@ -1,6 +1,7 @@
 # TodoList
 
-Web application to keep track of your todo list (in development).
+Web application to keep track of your todo list (in development).\
+View this project live: https://dh-giang-vu.github.io/TodoList/
 
 # Current UI Design Plan
 
