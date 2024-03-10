@@ -19,7 +19,7 @@ body {
     left: 0;
     
     height: 100%;
-    width: var(--sidebar-width);
+    width: min(35%,var(--sidebar-width));
 
 
 
@@ -111,9 +111,7 @@ a.active{
 /* Main content */
 
 .main-content {
-    margin-left: var(--sidebar-width);
-    padding-left: 32px;
-    padding-right: 32px;
+    margin-left: min(35%, var(--sidebar-width));
 }
 
 .main-content .active {
@@ -144,15 +142,18 @@ a.active{
     margin-top: 32px;
     height: 80px;
 
+    margin-left: 3%;
+
     /* title underline */
     width: fit-content;
+    height: fit-content;
     border-bottom: 4px solid black;
     padding-right: 24px;
+
 }
 
 .projects-container{
-    margin: 32px 128px;
-    min-height: 70vh;
+    margin: 36px clamp(8px, 10%, 96px);
 }
 
 .project {
