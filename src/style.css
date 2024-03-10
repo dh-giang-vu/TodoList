@@ -170,6 +170,8 @@ a.active{
 .header {
     grid-area: 1 / 1 / 2 / 3;
     border-bottom: var(--std-proj-border);
+
+    font-weight: 700;
 }
 
 .task-list {
@@ -193,15 +195,41 @@ a.active{
 
 }
 
-
-.task-list li {
+.task-item {
     border-bottom: var(--std-proj-border);
+    height: 48px;
+
+    /* Checkbox and Task Name in 1 row */
+    display: flex;
 }
 
-.task-list li:last-child {
+.task-list span {
+    height: inherit;
+}
+
+.task-item:last-child {
     border-bottom: none;
 }
 
 .cb-container {
+    height: 100%;
+    aspect-ratio: 1 / 1;
     border-right: var(--std-proj-border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+input[type=checkbox] {
+    transform: scale(2);
+}
+
+
+.task-name {
+    display: flex;
+    align-items: center;
+
+    padding-left: min(10px,3%);
+}
+
