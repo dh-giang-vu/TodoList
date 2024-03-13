@@ -1,11 +1,15 @@
 :root {
     --sidebar-width: 300px;
+    --row-height: 48px;
+    --std-border: 1px solid black;
 }
 
 body {
     margin: 0;
     padding: 0;
 }
+
+
 
 
 /* Everything in Sidebar */
@@ -19,7 +23,7 @@ body {
     left: 0;
     
     height: 100%;
-    width: min(35%,var(--sidebar-width));
+    width: var(--sidebar-width);
 
 
 
@@ -111,7 +115,7 @@ a.active{
 /* Main content */
 
 .main-content {
-    margin-left: min(35%, var(--sidebar-width));
+    margin-left: var(--sidebar-width);
 }
 
 .main-content .active {
@@ -152,7 +156,8 @@ a.active{
 
 }
 
-.projects-container{
+.projects-container,
+.tasks-container {
     margin: 36px clamp(8px, 10%, 96px);
 }
 
@@ -160,19 +165,25 @@ a.active{
     margin-top: 16px;
     
     display: grid;
-    grid-template-rows: 32px 1fr;
+    grid-template-rows: var(--row-height) 1fr;
     grid-template-columns: 2fr 1fr;
 
-    --std-proj-border: 1px solid black;
-    border: var(--std-proj-border);
+    border: var(--std-border);
 
 }
 
-.header {
+.proj-name-container {
+    /* styling for the "table" */
     grid-area: 1 / 1 / 2 / 3;
-    border-bottom: var(--std-proj-border);
-
+    border-bottom: var(--std-border);
+    
     font-weight: 700;
+    font-size: 1.5em;
+    padding-left: 8px;
+
+    /* vertically centre project's name */
+    display: flex;
+    align-items: center;
 }
 
 .task-list {
@@ -186,7 +197,7 @@ a.active{
     grid-row: 1fr;
     grid-template-columns: 1fr;
 
-    border-right: var(--std-proj-border);
+    border-right: var(--std-border);
 
 
 }
@@ -197,8 +208,8 @@ a.active{
 }
 
 .task-item {
-    border-bottom: var(--std-proj-border);
-    height: 48px;
+    border-bottom: var(--std-border);
+    height: var(--row-height);
 
     /* Checkbox and Task Name in 1 row */
     display: flex;
@@ -215,7 +226,7 @@ a.active{
 .cb-container {
     height: 100%;
     aspect-ratio: 1 / 1;
-    border-right: var(--std-proj-border);
+    border-right: var(--std-border);
 
     display: flex;
     align-items: center;
@@ -234,3 +245,64 @@ input[type=checkbox] {
     padding-left: min(10px,3%);
 }
 
+
+
+/* -------------------------- ALL TASKS -------------------------- */
+
+
+
+.table,
+.table li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.table {
+    display: grid;
+    grid-template-rows: var(--row-height);
+}
+
+.tb-row {
+    /* divide each row into 4 columns */
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: var(--row-height) repeat(2, minmax(128px, 3fr)) minmax(90px, 2fr);
+    
+    /* row styling + border */
+    height: var(--row-height);
+    border: var(--std-border);
+    border-top: none;
+}
+
+.tb-header {
+    border-top: var(--std-border);
+    font-weight: 700;
+    font-size: 1.5em
+}
+
+.tb-row-item {
+    display: flex;
+    align-items: center;
+    border-right: var(--std-border);
+}
+
+.task,
+.due-date,
+.priority {
+    padding-left: 8px;
+}
+
+
+
+
+/* Media Queries to hide sidebar when page is small */
+@media screen and (max-width:800px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}

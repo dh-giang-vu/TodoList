@@ -50,7 +50,7 @@ const projectManager = (function() {
 
 
 const displayController = (function() {
-    let activeIndex = 0;
+    let activeIndex = 1;
     const sidebarNavLinks = document.querySelectorAll('.nav-list a');
     const mainContentPgs = document.querySelector(".main-content").children;
     
