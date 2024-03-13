@@ -1,10 +1,9 @@
 /**
- * Script dedicated to functions for creating/dealing with DOM elements
+ * Script dedicated to functions for creating/manipulating DOM elements
  */
 
 
 const tasksTable = document.querySelector(".table");
-
 
 
 
@@ -35,10 +34,24 @@ const createTaskDOM = (task) => {
     priority.classList.add("priority");
     priority.textContent = task.priority;
 
+    const deleteBtn = document.createElement('div');
+    deleteBtn.classList.add("tb-row-item");
+    deleteBtn.classList.add("delete-btn");
+
+    const btn = document.createElement('button');
+    
+
+    const icon = document.createElement('i');
+    icon.className = "material-icons";
+    icon.textContent = "delete";
+    btn.appendChild(icon);
+    deleteBtn.appendChild(btn);
+
     taskItem.appendChild(cbContainer);
     taskItem.appendChild(taskName);
     taskItem.appendChild(dueDate);
     taskItem.appendChild(priority);
+    taskItem.appendChild(deleteBtn);
 
     return taskItem;
 }
@@ -66,10 +79,6 @@ const displayController = (function() {
         activeIndex = newIndex;
         makeActive();
     }
-    
-    // Display page with index === 0 on page load 
-    window.onload = makeActive();
-
 
     /* Render Task Board Page */
     const renderTaskBoard = (allTasks) => {
@@ -84,4 +93,7 @@ const displayController = (function() {
 })();
 
 
-export {displayController};
+
+
+
+export {displayController, tasksTable};

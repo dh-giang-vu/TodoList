@@ -249,11 +249,16 @@ input[type=checkbox] {
 
 /* -------------------------- ALL TASKS -------------------------- */
 
+.tasks-container {
+    min-width: fit-content;
+}
+
 #add-task {
     margin-bottom: 6px;
     display: flex;
     justify-content: end;
 }
+
 
 .table,
 .table li {
@@ -271,7 +276,7 @@ input[type=checkbox] {
     /* divide each row into 4 columns */
     display: grid;
     grid-template-rows: 100%;
-    grid-template-columns: var(--row-height) repeat(2, minmax(128px, 3fr)) minmax(90px, 2fr);
+    grid-template-columns: var(--row-height) minmax(128px, 3fr) minmax(128px, 2fr) minmax(96px, 1fr) var(--row-height);
     
     /* row styling + border */
     height: var(--row-height);
@@ -298,6 +303,19 @@ input[type=checkbox] {
     padding-left: 8px;
 }
 
+.delete-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-btn button {
+    background-color: white;
+}
+
+.delete-btn button:hover {
+    color: rgb(117, 117, 117);
+}
 
 
 

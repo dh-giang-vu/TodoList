@@ -1,23 +1,26 @@
 import '../style.css';
 import { PRIORITY, STATUS } from './global_var.js';
-import { displayController } from './dom.js';
+import { displayController, tasksTable } from './dom.js';
 
 const sidebarNav = document.querySelector(".nav-list");
 const addTaskBtn = document.querySelector("#add-task button");
 
-addTaskBtn.addEventListener("click", function() {
-    taskManager.createTask("THis is ANOTHER task name", "due date", PRIORITY.HIGH);
-    displayController.renderTaskBoard(taskManager.allTasks);
-})
+
 
 /* Manage all tasks */
 const taskManager = (function() {
     const allTasks = [];
 
+    /* For testing if we're deleting/modifying correct task */
+    let count = 0;
+
     /* Create new task object and add to allTasks array */
-    const createTask = (name, dueDate, priority=PRIORITY.UNDEFINED) => {
+    const createTask = (name=count, dueDate=count, priority=PRIORITY.UNDEFINED) => {
         let status = STATUS.NOT_STARTED;
         allTasks.push({name, dueDate, priority, status});
+        
+        /* For testing */
+        count += 1;
     }
 
     /* Delete task object from allTasks array */
@@ -54,6 +57,11 @@ const projectManager = (function() {
 })();
 
 
+window.onload = () => {
+    displayController.changeActiveTab(1);
+    taskManager.createTask("A default task", "due date", PRIORITY.MED);
+    displayController.renderTaskBoard(taskManager.allTasks);
+}
 
 sidebarNav.addEventListener("click", function(e) {
     if (e.target.tagName !== 'A') {
@@ -61,7 +69,32 @@ sidebarNav.addEventListener("click", function(e) {
     }
     const newActiveIndex = e.target.getAttribute('index');
     displayController.changeActiveTab(newActiveIndex);
-})
+});
+
+
+
+addTaskBtn.addEventListener("click", function() {
+    taskManager.createTask();
+    displayController.renderTaskBoard(taskManager.allTasks);
+});
+
+
+tasksTable.addEventListener("click", (e) => {
+    const domElem = e.target;
+    if (domElem.tagName === "BUTTON" || domElem.tagName === "I") {
+        console.log(domElem);
+
+        const elemList = tasksTable.querySelectorAll(domElem.tagName);
+        console.log(elemList);
+
+        for (let i = 0; i < elemList.length; i++) {
+            if (domElem === elemList[i]) {
+                taskManager.deleteTask(i);
+                displayController.renderTaskBoard(taskManager.allTasks);
+            }
+        }
+    }
+});
 
 
 
