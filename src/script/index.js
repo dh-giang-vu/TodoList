@@ -1,7 +1,14 @@
-import '../style.css'
-import {PRIORITY, STATUS} from './global_var.js'
+import '../style.css';
+import { PRIORITY, STATUS } from './global_var.js';
+import { displayController } from './dom.js';
 
 const sidebarNav = document.querySelector(".nav-list");
+const addTaskBtn = document.querySelector("#add-task button");
+
+addTaskBtn.addEventListener("click", function() {
+    taskManager.createTask("THis is ANOTHER task name", "due date", PRIORITY.HIGH);
+    displayController.renderTaskBoard(taskManager.allTasks);
+})
 
 /* Manage all tasks */
 const taskManager = (function() {
@@ -48,41 +55,6 @@ const projectManager = (function() {
 
 
 
-
-const displayController = (function() {
-    let activeIndex = 1;
-    const sidebarNavLinks = document.querySelectorAll('.nav-list a');
-    const mainContentPgs = document.querySelector(".main-content").children;
-    
-    const removeActive = () => {
-        sidebarNavLinks[activeIndex].classList.remove("active");
-        mainContentPgs[activeIndex].classList.remove("active");
-    }
-
-    const makeActive = () => {
-        sidebarNavLinks[activeIndex].classList.add("active");
-        mainContentPgs[activeIndex].classList.add("active");
-    }
-
-    const changeActiveTab = (newIndex) => {
-        removeActive();
-        activeIndex = newIndex;
-        makeActive();
-    }
-    
-    // Display page with index === 0 on page load 
-    window.onload = makeActive();
-
-    return {changeActiveTab}
-})();
-
-
-
-
-
-
-
-
 sidebarNav.addEventListener("click", function(e) {
     if (e.target.tagName !== 'A') {
         return;
@@ -90,5 +62,7 @@ sidebarNav.addEventListener("click", function(e) {
     const newActiveIndex = e.target.getAttribute('index');
     displayController.changeActiveTab(newActiveIndex);
 })
+
+
 
 

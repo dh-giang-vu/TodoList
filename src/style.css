@@ -249,7 +249,11 @@ input[type=checkbox] {
 
 /* -------------------------- ALL TASKS -------------------------- */
 
-
+#add-task {
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: end;
+}
 
 .table,
 .table li {
@@ -273,6 +277,7 @@ input[type=checkbox] {
     height: var(--row-height);
     border: var(--std-border);
     border-top: none;
+    border-right: none;
 }
 
 .tb-header {
