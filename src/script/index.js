@@ -32,28 +32,63 @@ addTaskBtn.addEventListener("click", function() {
 tasksTable.addEventListener("click", (e) => {
     const domElem = e.target;
 
+    /* Case when table header was clicked */
+    if (domElem.parentElement.classList.contains("tb-header")) {
+        // Do nothing
+        return;
+    }
+
     /* Handle case when  delete button was pressed */
     if (domElem.tagName === "BUTTON" || domElem.tagName === "I") {
         handleDeleteBtnClick(domElem);
+        return;
     }
 
+    if (domElem.classList.contains("task")) {
+        handleTaskClick(domElem);
+    }
 
 });
 
 
 
-/* Delete corresponding task from taskManager & update display */
-function handleDeleteBtnClick (domElem) {
+function fetchTaskNum(domElem) {
     const elemList = tasksTable.querySelectorAll(domElem.tagName);
 
     for (let i = 0; i < elemList.length; i++) {
         if (domElem === elemList[i]) {
-            taskManager.deleteTask(i);
-            displayController.renderTaskBoard(taskManager.allTasks);
+            return i;
         }
     }
+
+    return null;
 }
 
+
+
+/* Delete corresponding task from taskManager & update display */
+function handleDeleteBtnClick(domElem) {
+    const taskNum = fetchTaskNum(domElem);
+    taskManager.deleteTask(taskNum);
+    displayController.renderTaskBoard(taskManager.allTasks);
+}
+
+
+function handleTaskClick(domElem) {
+    const inputField = document.createElement("input");
+    inputField.type = "text";
+    
+    const parent = domElem.parentElement;
+    parent.replaceChild(inputField, domElem);
+    inputField.addEventListener("keypress", (e) => {
+        if (e.keyCode == 13) {
+            domElem.textContent = inputField.value;
+            parent.replaceChild(domElem, inputField);
+        }
+    });
+
+    // TODO: fetch tasknum and change task name in task manager
+}
 
 
 
