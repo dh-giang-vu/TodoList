@@ -45,6 +45,10 @@ const taskManager = (function() {
         allTasks.splice(taskNum, 1);
     }
 
+    const setName = (taskNum, newName) => {
+        allTasks[taskNum].name = newName;
+    }
+
     /* Set priority of task object */
     const setPriority = (task, priority) => {
         task.priority = priority;
@@ -55,7 +59,7 @@ const taskManager = (function() {
         task.status = status;
     }
 
-    return {createTask, deleteTask, setPriority, setStatus, allTasks};
+    return {createTask, deleteTask, setName, setPriority, setStatus, allTasks};
 
 })();
 

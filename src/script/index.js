@@ -51,20 +51,21 @@ tasksTable.addEventListener("click", (e) => {
 });
 
 
-
+/* 
+ * Return the position of a task in taskManager given its dom element 
+ * or one of its child node
+*/
 function fetchTaskNum(domElem) {
-    const elemList = tasksTable.querySelectorAll(domElem.tagName);
+    const allRows = document.querySelectorAll(".tb-row:not(.tb-header)")
 
-    for (let i = 0; i < elemList.length; i++) {
-        if (domElem === elemList[i]) {
+    for (let i = 0; i < allRows.length; i++) {
+        if (allRows[i].contains(domElem)) {
             return i;
         }
     }
 
     return null;
 }
-
-
 
 /* Delete corresponding task from taskManager & update display */
 function handleDeleteBtnClick(domElem) {
@@ -73,22 +74,44 @@ function handleDeleteBtnClick(domElem) {
     displayController.renderTaskBoard(taskManager.allTasks);
 }
 
-
+/* Allow user to edit task name by clicking on the div with that task name */
 function handleTaskClick(domElem) {
+
     const inputField = document.createElement("input");
     inputField.type = "text";
     
+    // Replace div with input field
     const parent = domElem.parentElement;
     parent.replaceChild(inputField, domElem);
-    inputField.addEventListener("keypress", (e) => {
-        if (e.keyCode == 13) {
-            domElem.textContent = inputField.value;
-            parent.replaceChild(domElem, inputField);
-        }
-    });
 
-    // TODO: fetch tasknum and change task name in task manager
+    // Immediately focus to allow typing
+    inputField.focus();
+
+    // Input field lose focus when enter key pressed
+    inputField.addEventListener("keypress", (e) => {
+        if (e.code == "Enter") {
+            inputField.blur();
+        }
+    })
+
+    // When input field is not focused -> save its value as the new task name
+    inputField.addEventListener("blur", () => 
+        saveTaskName(domElem, inputField, parent));
 }
 
 
+/* 
+ * Helper function: task name value from input field to task manager
+ * and swap out DOM element (back to being a div)
+*/
+function saveTaskName(domElem, inputField, parent) {
+    // Swap out DOM element
+    const newName = inputField.value;
+    domElem.textContent = newName;
+    parent.replaceChild(domElem, inputField);
+    
+    // Save new name to taskManager
+    const taskNum = fetchTaskNum(domElem);
+    taskManager.setName(taskNum, newName);
+}
 

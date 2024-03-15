@@ -1,1 +1,134 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><title>All Projects</title><script defer="defer" src="bundle.js"></script></head><body><div class="sidebar"><div class="profile-container"><div>Your Name</div><div class="pfp-container"><img src="5246d6f883c424a70273.jpg"></div></div><ul class="nav-list"><li><a href="#" index="0">All Projects</a></li><li><a href="#" index="1">All Tasks</a></li><li><a href="#" index="2">Finished Projects</a></li><li><a href="#" index="3">Finished Tasks</a></li></ul><div class="management"><ul><li><a href="#">Settings</a></li><li><a href="#">Sign out</a></li></ul></div></div><div class="main-content"><div class="all-projects"><div class="title-container">Project Board</div><div class="projects-container"><div class="project"><div class="proj-name-container"><div>My Project 1</div></div><ul class="task-list"><li class="task-item"><div class="cb-container"><input type="checkbox" name="checkbox" id=""></div><div class="task-name">Task 1</div></li><li class="task-item"><div class="cb-container"><input type="checkbox" name="checkbox" id=""></div><div class="task-name">Task 2</div></li><li class="task-item"><div class="cb-container"><input type="checkbox" name="checkbox" id=""></div><div class="task-name">Task 3</div></li><li class="task-item"><div class="cb-container"><input type="checkbox" name="checkbox" id=""></div><div class="task-name">Task 4</div></li></ul><div class="proj-note">This is some notes about the project.</div></div><div class="project"><div class="proj-name-container"><div>My Project 2</div></div><ul class="task-list"><li class="task-item"><div class="cb-container"><input type="checkbox" name="checkbox" id=""></div><div class="task-name">Task 5</div></li><li class="task-item"><div class="cb-container"><input type="checkbox" name="checkbox" id=""></div><div class="task-name">Task 6</div></li></ul><div class="proj-note">This is some notes about the project.</div></div></div></div><div class="all-tasks"><div class="title-container">Task Board</div><div class="tasks-container"><div id="add-task"><button><span>Add Task</span></button></div><ul class="table"><li class="tb-header tb-row"><div class="tb-row-item cb-container"></div><div class="tb-row-item task">Task Name</div><div class="tb-row-item due-date">Due Date</div><div class="tb-row-item priority">Priority</div><div class="tb-row-item delete-btn"></div></li></ul></div></div><div class="finished-projects"><div class="title-container">Finished Projects</div></div><div class="finished-tasks"><div class="title-container">Finished Tasks</div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <title>All Projects</title>
+<script defer src="bundle.js"></script></head>
+<body>
+  <div class="sidebar">
+    <div class="profile-container">
+      <div>Your Name</div>
+      <div class="pfp-container"><img src="5246d6f883c424a70273.jpg"></div>
+    </div>
+
+    <ul class="nav-list">
+      <li><a href="#" index="0">All Projects</a></li>
+      <li><a href="#" index="1">All Tasks</a></li>
+      <li><a href="#" index="2">Finished Projects</a></li>
+      <li><a href="#" index="3">Finished Tasks</a></li>
+    </ul>
+
+    <div class="management">
+      <ul>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <div class="all-projects">
+      <div class="title-container">
+        Project Board
+      </div>
+
+      <div class="projects-container">
+
+        <div class="project">
+          <div class="proj-name-container">
+            <div>My Project 1</div>
+          </div>
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="cb-container"><input type="checkbox" name="checkbox" id=""></div>
+              <div class="task-name">Task 1</div>
+            </li>
+            <li class="task-item">
+              <div class="cb-container"><input type="checkbox" name="checkbox" id=""></div>
+              <div class="task-name">Task 2</div>
+            </li>
+            <li class="task-item">
+              <div class="cb-container"><input type="checkbox" name="checkbox" id=""></div>
+              <div class="task-name">Task 3</div>
+            </li>
+            <li class="task-item">
+              <div class="cb-container"><input type="checkbox" name="checkbox" id=""></div>
+              <div class="task-name">Task 4</div>
+            </li>
+          </ul>
+          <div class="proj-note">
+            This is some notes about the project.
+          </div>
+        </div>
+
+
+        <div class="project">
+          <div class="proj-name-container">
+            <div>My Project 2</div>
+          </div>
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="cb-container"><input type="checkbox" name="checkbox" id=""></div>
+              <div class="task-name">Task 5</div>
+            </li>
+            <li class="task-item">
+              <div class="cb-container"><input type="checkbox" name="checkbox" id=""></div>
+              <div class="task-name">Task 6</div>
+            </li>
+          </ul>
+          <div class="proj-note">
+            This is some notes about the project.
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <div class="all-tasks">
+      <div class="title-container">
+        Task Board
+      </div>
+
+      <div class="tasks-container">
+
+        <div id="add-task">
+          <button>
+            <span>Add Task</span>
+          </button>
+        </div>
+
+        <ul class="table">
+          <li class="tb-header tb-row">
+            <div class="tb-row-item cb-container"></div>
+            <div class="tb-row-item task">Task Name</div>
+            <div class="tb-row-item due-date">Due Date</div>
+            <div class="tb-row-item priority">Priority</div>
+            <div class="tb-row-item delete-btn"></div>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="finished-projects">
+      <div class="title-container">
+        Finished Projects
+      </div>
+    </div>
+
+    <div class="finished-tasks">
+      <div class="title-container">
+        Finished Tasks
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
