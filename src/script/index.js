@@ -27,10 +27,14 @@ addTaskBtn.addEventListener("click", function() {
     displayController.renderTaskBoard(taskManager.allTasks);
     
     /* 
-     * TODO: creating a new task immediately focus on
-     * the new task name's input field 
+     * Creating a new task immediately focus on the new task name's input field 
+     * Note: clicking add button add a new task
+     *  => guaranteed to always have at least 1 task in table when this happen
+     *  => we won't accidentally select the header
     */
-    // handleTaskInputClick(last .tb-row .task);
+    const allTasksDOM = document.querySelectorAll(".task");
+    const last = allTasksDOM[allTasksDOM.length-1];
+    handleTaskInputClick(last);
 });
 
 

@@ -32,7 +32,7 @@ const taskManager = (function() {
     let count = 0;
 
     /* Create new task object and add to allTasks array */
-    const createTask = (name=count, dueDate=count, priority=PRIORITY.UNDEFINED) => {
+    const createTask = (name="", dueDate=count, priority=PRIORITY.UNDEFINED) => {
         let status = STATUS.NOT_STARTED;
         allTasks.push({name, dueDate, priority, status});
         

@@ -7,7 +7,26 @@ import { PRIORITY } from "./task";
 
 const tasksTable = document.querySelector(".table");
 
+/*
+function getPriorityString(value) {
+    console.log(value);
+    switch(value) {
+        case PRIORITY.UNDEFINED:
+            return "--";
+        case PRIORITY.LOW:
+            return "Low";
+        case PRIORITY.MED:
+            return "Medium";
+        case PRIORITY.HIGH:
+            return "High";
+        default:
+            console.log("ERROR: getPriorityString");
+    }
 
+    return null;
+
+}
+*/
 
 const createTaskDOM = (task) => {
     const taskItem = document.createElement('li');
