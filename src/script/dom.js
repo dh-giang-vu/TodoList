@@ -84,7 +84,6 @@ const displayController = (function() {
     const renderTaskBoard = (allTasks) => {
         tasksTable.replaceChildren(tasksTable.firstElementChild);
         for (let i = 0; i < allTasks.length; i++) {
-            console.log(allTasks[i]);
             tasksTable.appendChild(createTaskDOM(allTasks[i]));
         }
     }

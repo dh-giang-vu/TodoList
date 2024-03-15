@@ -48,6 +48,10 @@ tasksTable.addEventListener("click", (e) => {
         handleTaskClick(domElem);
     }
 
+    if (domElem.classList.contains("due-date")) {
+        handleDateClick(domElem);
+    }
+
 });
 
 
@@ -76,9 +80,10 @@ function handleDeleteBtnClick(domElem) {
 
 /* Allow user to edit task name by clicking on the div with that task name */
 function handleTaskClick(domElem) {
-
+    // Create new text input field
     const inputField = document.createElement("input");
     inputField.type = "text";
+    inputField.value = domElem.textContent;
     
     // Replace div with input field
     const parent = domElem.parentElement;
@@ -115,3 +120,8 @@ function saveTaskName(domElem, inputField, parent) {
     taskManager.setName(taskNum, newName);
 }
 
+
+
+function handleDateClick(domElem) {
+    console.log(domElem);
+}
