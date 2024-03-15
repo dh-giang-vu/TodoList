@@ -49,6 +49,10 @@ const taskManager = (function() {
         allTasks[taskNum].name = newName;
     }
 
+    const setDate = (taskNum, newDate) => {
+        allTasks[taskNum].dueDate = newDate;
+    }
+
     /* Set priority of task object */
     const setPriority = (task, priority) => {
         task.priority = priority;
@@ -59,7 +63,7 @@ const taskManager = (function() {
         task.status = status;
     }
 
-    return {createTask, deleteTask, setName, setPriority, setStatus, allTasks};
+    return {createTask, deleteTask, setName, setDate, setPriority, setStatus, allTasks};
 
 })();
 

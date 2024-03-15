@@ -25,6 +25,12 @@ sidebarNav.addEventListener("click", function(e) {
 addTaskBtn.addEventListener("click", function() {
     taskManager.createTask();
     displayController.renderTaskBoard(taskManager.allTasks);
+    
+    /* 
+     * TODO: creating a new task immediately focus on
+     * the new task name's input field 
+    */
+    // handleTaskInputClick(last .tb-row .task);
 });
 
 
@@ -45,11 +51,11 @@ tasksTable.addEventListener("click", (e) => {
     }
 
     if (domElem.classList.contains("task")) {
-        handleTaskClick(domElem);
+        handleTaskInputClick(domElem);
     }
 
     if (domElem.classList.contains("due-date")) {
-        handleDateClick(domElem);
+        handleTaskInputClick(domElem, "date");
     }
 
 });
@@ -79,10 +85,10 @@ function handleDeleteBtnClick(domElem) {
 }
 
 /* Allow user to edit task name by clicking on the div with that task name */
-function handleTaskClick(domElem) {
+function handleTaskInputClick(domElem, type="text") {
     // Create new text input field
     const inputField = document.createElement("input");
-    inputField.type = "text";
+    inputField.type = type;
     inputField.value = domElem.textContent;
     
     // Replace div with input field
@@ -101,27 +107,30 @@ function handleTaskClick(domElem) {
 
     // When input field is not focused -> save its value as the new task name
     inputField.addEventListener("blur", () => 
-        saveTaskName(domElem, inputField, parent));
+        saveTask(domElem, inputField, parent, type));
 }
 
 
 /* 
- * Helper function: task name value from input field to task manager
+ * Helper function: save value from input field to task manager
  * and swap out DOM element (back to being a div)
 */
-function saveTaskName(domElem, inputField, parent) {
+function saveTask(domElem, inputField, parent, type) {
     // Swap out DOM element
-    const newName = inputField.value;
-    domElem.textContent = newName;
+    const newValue = inputField.value;
+    domElem.textContent = newValue;
     parent.replaceChild(domElem, inputField);
     
-    // Save new name to taskManager
+    // Save new value to taskManager
     const taskNum = fetchTaskNum(domElem);
-    taskManager.setName(taskNum, newName);
-}
 
-
-
-function handleDateClick(domElem) {
-    console.log(domElem);
+    if (type == "text") {
+        taskManager.setName(taskNum, newValue);
+    }
+    else if (type == "date") {
+        taskManager.setDate(taskNum, newValue);
+    }
+    else {
+        taskManager.setPriority(taskNum, newValue);
+    }
 }
