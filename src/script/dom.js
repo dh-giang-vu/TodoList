@@ -2,6 +2,8 @@
  * Script dedicated to functions for creating/manipulating DOM elements
  */
 
+import { PRIORITY } from "./task";
+
 
 const tasksTable = document.querySelector(".table");
 
@@ -57,6 +59,34 @@ const createTaskDOM = (task) => {
 }
 
 
+const createPrioritySelect = () => {
+    const select = document.createElement("select");
+
+    const op0 = document.createElement("option")
+    op0.value = PRIORITY.UNDEFINED;
+    op0.innerHTML = "--";
+
+    const op1 = document.createElement("option")
+    op1.value = PRIORITY.LOW;
+    op1.innerHTML = "Low";
+
+    const op2 = document.createElement("option")
+    op2.value = PRIORITY.MED;
+    op2.innerHTML = "Medium";
+
+    const op3 = document.createElement("option")
+    op3.value = PRIORITY.HIGH;
+    op3.innerHTML = "High";
+
+    select.appendChild(op0)
+    select.appendChild(op1);
+    select.appendChild(op2);
+    select.appendChild(op3);
+
+    return select;
+}
+
+
 const displayController = (function() {
 
     /* =============== Sidebar Tab Switching functions =============== */
@@ -95,4 +125,4 @@ const displayController = (function() {
 
 
 
-export {displayController, tasksTable};
+export {displayController, tasksTable, createPrioritySelect};

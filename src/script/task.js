@@ -54,8 +54,8 @@ const taskManager = (function() {
     }
 
     /* Set priority of task object */
-    const setPriority = (task, priority) => {
-        task.priority = priority;
+    const setPriority = (taskNum, priority) => {
+        allTasks[taskNum].priority = priority;
     }
 
     /* Set status of task object - (Not Started, In Progress, Done) */

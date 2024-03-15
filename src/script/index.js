@@ -1,6 +1,6 @@
 import '../style.css';
 
-import { displayController, tasksTable } from './dom.js';
+import { createPrioritySelect, displayController, tasksTable } from './dom.js';
 import { taskManager } from './task.js';
 
 const sidebarNav = document.querySelector(".nav-list");
@@ -56,6 +56,10 @@ tasksTable.addEventListener("click", (e) => {
 
     if (domElem.classList.contains("due-date")) {
         handleTaskInputClick(domElem, "date");
+    }
+
+    if (domElem.classList.contains("priority")) {
+        handlePriorityInputClick(domElem);
     }
 
 });
@@ -133,4 +137,16 @@ function saveTask(domElem, inputField, parent, type) {
     else {
         taskManager.setPriority(taskNum, newValue);
     }
+}
+
+
+function handlePriorityInputClick(domElem) {
+    const inputField = createPrioritySelect();    
+    // Replace div with input field
+    const parent = domElem.parentElement;
+    parent.replaceChild(inputField, domElem);
+    //
+    inputField.addEventListener("change", () => {
+        saveTask(domElem, inputField, parent, "priority");
+    })
 }
