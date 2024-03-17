@@ -148,9 +148,16 @@ function handlePriorityInputClick(domElem) {
     const inputField = createPrioritySelect();    
     // Replace div with input field
     const parent = domElem.parentElement;
-    parent.replaceChild(inputField, domElem);
-    //
+    parent.replaceChild(inputField, domElem)
+
+    // Focus to allow select to blur when user click outside
+    inputField.focus()
+    // blur when new value selected
     inputField.addEventListener("change", () => {
+        inputField.blur();
+    })
+    // save task when select is blurred
+    inputField.addEventListener("blur", () => {
         saveTask(domElem, inputField, parent, "priority");
     })
 }
