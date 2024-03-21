@@ -2,9 +2,11 @@ import '../style.css';
 
 import { createPrioritySelect, displayController, tasksTable } from './dom.js';
 import { taskManager } from './task.js';
+import { storageManager } from './persistence.js';
 
 const sidebarNav = document.querySelector(".nav-list");
 const addTaskBtn = document.querySelector("#add-task button");
+
 
 
 window.onload = () => {
@@ -26,6 +28,8 @@ addTaskBtn.addEventListener("click", function() {
     taskManager.createTask();
     displayController.renderTaskBoard(taskManager.allTasks);
     
+    storageManager.saveData()
+
     /* 
      * Creating a new task immediately focus on the new task name's input field 
      * Note: clicking add button add a new task
