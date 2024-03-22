@@ -5,10 +5,15 @@ const storageManager = (function() {
         /**
          * localStorage can't translate this into JSON immediately
          */
-        localStorage.setItem("allTasks", JSON.stringify(taskManager.allTasks))
+        localStorage.setItem("allTasks", JSON.stringify(taskManager.allTasks));
     }
 
-    return {saveData}
+    const getData = () => {
+        const tasks = JSON.parse(localStorage.getItem("allTasks")); 
+        return tasks;
+    }
+
+    return {saveData, getData}
 })();
 
 export {storageManager}

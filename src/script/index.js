@@ -10,8 +10,24 @@ const addTaskBtn = document.querySelector("#add-task button");
 
 
 window.onload = () => {
+    // On load show the "All Tasks" Tab
     displayController.changeActiveTab(1);
-    taskManager.createTask("A default task", "due date");
+    const objects = storageManager.getData();
+
+    /**
+     * If user had no saved tasks, create a default task,
+     * else load tasks that user have previously created into
+     * taskManager
+     */
+    if (objects.length === 0) {
+        taskManager.createTask("A default task", "due date");
+    }
+    else {
+        for (const obj of objects) {
+            taskManager.loadTask(obj);
+        }
+    }
+    // Update display
     displayController.renderTaskBoard(taskManager.allTasks);
 }
 
@@ -27,8 +43,6 @@ sidebarNav.addEventListener("click", function(e) {
 addTaskBtn.addEventListener("click", function() {
     taskManager.createTask();
     displayController.renderTaskBoard(taskManager.allTasks);
-    
-    storageManager.saveData()
 
     /* 
      * Creating a new task immediately focus on the new task name's input field 
@@ -165,3 +179,12 @@ function handlePriorityInputClick(domElem) {
         saveTask(domElem, inputField, parent, "priority");
     })
 }
+
+
+window.onbeforeunload = () => {
+    console.log("reload");
+    storageManager.saveData();
+}
+
+
+

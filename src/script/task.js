@@ -38,6 +38,11 @@ const taskManager = (function() {
         
         /* For testing */
         count += 1;
+        console.log(allTasks.length);
+    }
+
+    const loadTask = (taskObj) => {
+        allTasks.push(taskObj);
     }
 
     /* Delete task object from allTasks array */
@@ -63,7 +68,7 @@ const taskManager = (function() {
         task.status = status;
     }
 
-    return {createTask, deleteTask, setName, setDate, setPriority, setStatus, allTasks};
+    return {createTask, deleteTask, setName, setDate, setPriority, setStatus, allTasks, loadTask};
 
 })();
 
