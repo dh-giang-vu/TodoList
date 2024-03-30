@@ -7,26 +7,22 @@ import { PRIORITY } from "./task";
 
 const tasksTable = document.querySelector(".table");
 
-/*
+
 function getPriorityString(value) {
-    console.log(value);
-    switch(value) {
-        case PRIORITY.UNDEFINED:
-            return "--";
-        case PRIORITY.LOW:
-            return "Low";
-        case PRIORITY.MED:
-            return "Medium";
-        case PRIORITY.HIGH:
-            return "High";
-        default:
-            console.log("ERROR: getPriorityString");
+    if (value == PRIORITY.HIGH) {
+        return "High";
     }
-
-    return null;
-
+    else if (value == PRIORITY.MED) {
+        return "Medium";
+    }
+    else if (value == PRIORITY.LOW) {
+        return "Low";
+    }
+    else {
+        return "";
+    }
 }
-*/
+
 
 const createTaskDOM = (task) => {
     const taskItem = document.createElement('li');
@@ -53,7 +49,7 @@ const createTaskDOM = (task) => {
     const priority = document.createElement('div');
     priority.classList.add("tb-row-item");
     priority.classList.add("priority");
-    priority.textContent = task.priority;
+    priority.textContent = getPriorityString(task.priority);
 
     const deleteBtn = document.createElement('div');
     deleteBtn.classList.add("tb-row-item");

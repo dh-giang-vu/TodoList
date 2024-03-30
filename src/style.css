@@ -10,8 +10,6 @@ body {
 }
 
 
-
-
 /* Everything in Sidebar */
 
 .sidebar {
@@ -89,11 +87,12 @@ body {
     align-items: center;
 }
 
+.management {
+    margin-top: 250px;
+}
 
 .management ul {
-    position: absolute;
     margin: 0;
-    bottom: 64px;
 }
 
 .management ul li {

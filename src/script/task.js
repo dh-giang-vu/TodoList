@@ -38,7 +38,6 @@ const taskManager = (function() {
         
         /* For testing */
         count += 1;
-        console.log(allTasks.length);
     }
 
     const loadTask = (taskObj) => {

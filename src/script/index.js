@@ -1,7 +1,7 @@
 import '../style.css';
 
 import { createPrioritySelect, displayController, tasksTable } from './dom.js';
-import { taskManager } from './task.js';
+import { taskManager, PRIORITY } from './task.js';
 import { storageManager } from './persistence.js';
 
 const sidebarNav = document.querySelector(".nav-list");
@@ -159,6 +159,8 @@ function saveTask(domElem, inputField, parent, type) {
     else {
         taskManager.setPriority(taskNum, newValue);
     }
+
+    displayController.renderTaskBoard(taskManager.allTasks);
 }
 
 
@@ -170,12 +172,24 @@ function handlePriorityInputClick(domElem) {
 
     // Focus to allow select to blur when user click outside
     inputField.focus()
+    
     // blur when new value selected
     inputField.addEventListener("change", () => {
         inputField.blur();
     })
     // save task when select is blurred
     inputField.addEventListener("blur", () => {
+        if (inputField.value == PRIORITY.UNDEFINED && domElem.textContent != "") {
+            if (domElem.textContent == "High") {
+                inputField.value = PRIORITY.HIGH;
+            }
+            else if (domElem.textContent == "Medium") {
+                inputField.value = PRIORITY.MED;
+            }
+            else {
+                inputField.value = PRIORITY.LOW;
+            }
+        }
         saveTask(domElem, inputField, parent, "priority");
     })
 }
